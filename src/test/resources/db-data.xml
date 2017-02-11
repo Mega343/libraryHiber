@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <role role_id="1" user_role="Guest"/>
+    <role role_id="2" user_role="Reader"/>
+    <role role_id="3" user_role="Librarian"/>
+    <role role_id="4" user_role="Admin"/>
+
+    <language language_id="1" language="Russian"/>
+    <language language_id="2" language="English"/>
+    <language language_id="3" language="Ukrainian"/>
+    <language language_id="4" language="Polish"/>
+    <language language_id="5" language="Italian"/>
+
+    <genre genre_id="1" genre="Detective"/>
+    <genre genre_id="2" genre="Novel"/>
+    <genre genre_id="3" genre="Science fiction"/>
+    <genre genre_id="4" genre="Educational literature"/>
+    <genre genre_id="5" genre="Other"/>
+
+    <publishing_house publishing_house_id="1" publishing_house_name="Roman"/>
+    <publishing_house publishing_house_id="2" publishing_house_name="Rosmen"/>
+    <publishing_house publishing_house_id="3" publishing_house_name="Ranok"/>
+
+    <author author_id="1" first_name="Taras" last_name="Shevchenko" patronymic="Grigorievich"/>
+    <author author_id="2" first_name="Alexsandr" last_name="Pyshkin" patronymic="Sergeevich"/>
+    <author author_id="3" first_name="Gilbert" last_name="Shildt" patronymic="null"/>
+    <author author_id="4" first_name="Polka" last_name="Polska" patronymic="null"/>
+    <author author_id="5" first_name="Saltikov" last_name="Schedrin" patronymic="null"/>
+
+    <shelf shelf_id="1" shelf_number="1"/>
+    <shelf shelf_id="2" shelf_number="2"/>
+    <shelf shelf_id="3" shelf_number="3"/>
+    <shelf shelf_id="4" shelf_number="4"/>
+    <shelf shelf_id="5" shelf_number="18"/>
+
+    <order_type order_type_id="1" order_type="Given to read"/>
+    <order_type order_type_id="2" order_type="Send by post"/>
+    <order_type order_type_id="3" order_type="Given to read in the reading room"/>
+
+    <document_type document_type_id="1" document_type="Passport"/>
+    <document_type document_type_id="2" document_type="Driving licence"/>
+    <document_type document_type_id="3" document_type="Pensioner's ID"/>
+
+
+    <book book_id="1" book_name="Java 8. Full manual." author_id="3" publishing_house_id="1" genre_id="4" year_of_issue="2012"
+           language_id="2" book_description="Some desrpt" book_quantity="25" book_in_warehouse="25" shelf_id="1"/>
+    <book book_id="2" book_name="Java 8." author_id="3" publishing_house_id="2" genre_id="4" year_of_issue="2013"
+           language_id="1" book_description="Some desrpt" book_quantity="50" book_in_warehouse="50" shelf_id="3"/>
+    <book book_id="3" book_name="Kobzar." author_id="1" publishing_house_id="1" genre_id="1" year_of_issue="2000"
+          language_id="1" book_description="Some desrpt" book_quantity="4" book_in_warehouse="4" shelf_id="2"/>
+    <book book_id="4" book_name="Polska mova." author_id="3" publishing_house_id="2" genre_id="3" year_of_issue="2000"
+          language_id="4" book_description="Some desrpt" book_quantity="1" book_in_warehouse="1" shelf_id="3"/>
+    <book book_id="5" book_name="Skazki." author_id="2" publishing_house_id="2" genre_id="2" year_of_issue="2000"
+          language_id="1" book_description="Some desrpt" book_quantity="4" book_in_warehouse="4" shelf_id="1"/>
+
+
+</dataset>

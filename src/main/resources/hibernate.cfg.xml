@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.h2.Driver</property>
+        <property name="hibernate.connection.url">jdbc:h2:tcp://localhost/~/sqllab</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+        <property name="show_sql">true</property>
+        <property name="hbm2ddl.auto">create</property>
+        <property name="current_session_context_class">thread</property>
+        <property name="connection.autocommit">true</property>
+        <property name="connection.pool_size">10</property>
+
+
+
+        <mapping class="com.nixsolutions.bean.Address"/>
+        <mapping class="com.nixsolutions.bean.Author"/>
+        <mapping class="com.nixsolutions.bean.Book"/>
+        <mapping class="com.nixsolutions.bean.Document"/>
+        <mapping class="com.nixsolutions.bean.DocumentType"/>
+        <mapping class="com.nixsolutions.bean.Genre"/>
+        <mapping class="com.nixsolutions.bean.Language"/>
+        <mapping class="com.nixsolutions.bean.Order"/>
+        <mapping class="com.nixsolutions.bean.OrderType"/>
+        <mapping class="com.nixsolutions.bean.PublishingHouse"/>
+        <mapping class="com.nixsolutions.bean.Role"/>
+        <mapping class="com.nixsolutions.bean.Shelf"/>
+        <mapping class="com.nixsolutions.bean.User"/>
+
+    </session-factory>
+</hibernate-configuration>

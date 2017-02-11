@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <book book_id="1" book_name="Java 8. Full manual." author_id="3" publishing_house_id="1" genre_id="4" year_of_issue="2012"
+          language_id="2" book_description="Some desrpt" book_quantity="25" book_in_warehouse="25" shelf_id="1"/>
+    <book book_id="2" book_name="Java 8." author_id="3" publishing_house_id="2" genre_id="4" year_of_issue="2013"
+          language_id="1" book_description="Some desrpt" book_quantity="50" book_in_warehouse="50" shelf_id="3"/>
+    <book book_id="3" book_name="Kobzar" author_id="1" publishing_house_id="1" genre_id="1" year_of_issue="2000"
+          language_id="1" book_description="Some desrpt" book_quantity="4" book_in_warehouse="4" shelf_id="2"/>
+    <book book_id="4" book_name="Polska mova." author_id="3" publishing_house_id="2" genre_id="3" year_of_issue="2000"
+          language_id="4" book_description="Some desrpt" book_quantity="1" book_in_warehouse="1" shelf_id="3"/>
+    <book book_id="5" book_name="Skazki." author_id="2" publishing_house_id="2" genre_id="2" year_of_issue="2000"
+          language_id="1" book_description="Some desrpt" book_quantity="4" book_in_warehouse="4" shelf_id="1"/>
+    <book book_id="6" book_name="Polska istoria" author_id="3" publishing_house_id="2" genre_id="3" year_of_issue="2001"
+          language_id="4" book_description="Some desrpt" book_quantity="12" book_in_warehouse="12" shelf_id="2"/>
+
+</dataset>
