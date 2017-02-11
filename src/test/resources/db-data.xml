@@ -27,6 +27,7 @@
     <author author_id="4" first_name="Polka" last_name="Polska" patronymic="null"/>
     <author author_id="5" first_name="Saltikov" last_name="Schedrin" patronymic="null"/>
 
+
     <shelf shelf_id="1" shelf_number="1"/>
     <shelf shelf_id="2" shelf_number="2"/>
     <shelf shelf_id="3" shelf_number="3"/>
@@ -41,17 +42,51 @@
     <document_type document_type_id="2" document_type="Driving licence"/>
     <document_type document_type_id="3" document_type="Pensioner's ID"/>
 
+    <address address_id="1" street_name="1" city_name="Kharkiv" house_number="25B" flat_number="32" />
+    <address address_id="2" street_name="1" city_name="Kharkiv" house_number="33" flat_number="1"/>
+    <address address_id="3" street_name="1" city_name="Kharkiv" house_number="1A" flat_number="3"/>
+    <address address_id="4" street_name="1" city_name="Kharkiv" house_number="198" flat_number="1999"/>
+    <address address_id="5" street_name="1" city_name="Kharkiv" house_number="14" flat_number="15"/>
+    <address address_id="6" street_name="1" city_name="Kharkiv" house_number="114" flat_number="135"/>
+    <address address_id="7" street_name="1" city_name="Kharkiv" house_number="132" flat_number="115"/>
+    <address address_id="8" street_name="1" city_name="Kharkiv" house_number="134" flat_number="115"/>
+
+    <document document_id="1" document_type_id="1" series="BA" number="123456" issued_by="GMVS" date_of_issue="2006-12-30"/>
+    <document document_id="2" document_type_id="2" series="AAA" number="123456" issued_by="GAI" date_of_issue="2003-04-12"/>
+    <document document_id="3" document_type_id="1" series="MN" number="123456" issued_by="GAI KYIV" date_of_issue="2001-01-23"/>
+    <document document_id="4" document_type_id="2" series="KL" number="123833" issued_by="GAI KHARKIV" date_of_issue="1992-03-29"/>
+    <document document_id="5" document_type_id="2" series="BC" number="123833" issued_by="GAI KHARKIV" date_of_issue="2009-11-14"/>
+    <document document_id="6" document_type_id="1" series="RR" number="984567" issued_by="GUMVS" date_of_issue="1988-07-07"/>
+    <document document_id="7" document_type_id="1" series="RK" number="984567" issued_by="GUMVS" date_of_issue="2011-09-19"/>
+
+    <user user_id="1" first_name="Ivan" last_name="Ivanov" email="ivanov@mail.ru" password="qwerty"
+          phone_number="+380501234567" karma="15" document_id="1" role_id="1" address_id="1"/>
+    <user user_id="2"  first_name="Tamara" last_name="Ivanova" email="ivanova@mail.ru" password="qwerty123"
+          phone_number="+380501234568" karma="25" document_id="2" role_id="3" address_id="2"/>
+    <user user_id="3"  first_name="Petr" last_name="Petrov" email="petrov@mail.ru" password="1321321321"
+          phone_number="+380501234578" karma="14" document_id="3" role_id="3" address_id="3"/>
+    <user user_id="4"  first_name="Sidor" last_name="Sidorov" email="sidorov@mail.ru" password="qwerty12345"
+          phone_number="+380541234578" karma="10" document_id="4" role_id="2" address_id="4"/>
+    <user user_id="5"  first_name="Kirill" last_name="Kutuzov" email="kutuzov@gmail.com" password="12344566"
+          phone_number="+380641234578" karma="10" document_id="5" role_id="2" address_id="5"/>
+    <user user_id="6"  first_name="Olga" last_name="Orlova" email="orlova@gmail.com" password="1234456633"
+          phone_number="+380931234578" karma="10" document_id="6" role_id="2" address_id="6"/>
+
 
     <book book_id="1" book_name="Java 8. Full manual." author_id="3" publishing_house_id="1" genre_id="4" year_of_issue="2012"
-           language_id="2" book_description="Some desrpt" book_quantity="25" book_in_warehouse="25" shelf_id="1"/>
+          language_id="2" book_description="Some desrpt" book_quantity="25" book_in_warehouse="25" shelf_id="1"/>
     <book book_id="2" book_name="Java 8." author_id="3" publishing_house_id="2" genre_id="4" year_of_issue="2013"
-           language_id="1" book_description="Some desrpt" book_quantity="50" book_in_warehouse="50" shelf_id="3"/>
-    <book book_id="3" book_name="Kobzar." author_id="1" publishing_house_id="1" genre_id="1" year_of_issue="2000"
+          language_id="1" book_description="Some desrpt" book_quantity="50" book_in_warehouse="50" shelf_id="3"/>
+    <book book_id="3" book_name="Kobzar" author_id="1" publishing_house_id="1" genre_id="1" year_of_issue="2000"
           language_id="1" book_description="Some desrpt" book_quantity="4" book_in_warehouse="4" shelf_id="2"/>
     <book book_id="4" book_name="Polska mova." author_id="3" publishing_house_id="2" genre_id="3" year_of_issue="2000"
           language_id="4" book_description="Some desrpt" book_quantity="1" book_in_warehouse="1" shelf_id="3"/>
-    <book book_id="5" book_name="Skazki." author_id="2" publishing_house_id="2" genre_id="2" year_of_issue="2000"
+    <book book_id="5" book_name="Skazki" author_id="2" publishing_house_id="2" genre_id="2" year_of_issue="2000"
           language_id="1" book_description="Some desrpt" book_quantity="4" book_in_warehouse="4" shelf_id="1"/>
 
+    <booking order_id="1" user_id="4" librarian_id="2" book_id="2" expected_return_date="2016-12-31" order_type_id="1"/>
+    <booking order_id="2" user_id="5" librarian_id="3" book_id="1" expected_return_date="2017-01-31" order_type_id="1"/>
+    <booking order_id="3" user_id="5" librarian_id="1" book_id="3" expected_return_date="2017-02-11" order_type_id="2"/>
+    <booking order_id="4" user_id="4" librarian_id="5" book_id="3" expected_return_date="2017-02-15" order_type_id="2"/>
 
 </dataset>

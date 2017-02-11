@@ -42,9 +42,12 @@ public class H2BookDAO implements BookDAO {
         LOG.traceEntry("Launched editing book {}", book.getBookID());
         try{
             session = getSessionFactory().openSession();
+            transaction = session.beginTransaction();
             session.saveOrUpdate(book);
+            transaction.commit();
         } catch (Exception e){
             LOG.catching(e);
+            transaction.rollback();
             throw LOG.throwing(new RuntimeException(e));
         } finally {
             if(session != null && session.isOpen()){

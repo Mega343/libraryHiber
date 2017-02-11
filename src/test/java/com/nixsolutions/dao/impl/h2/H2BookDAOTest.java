@@ -5,13 +5,12 @@ import com.nixsolutions.bean.*;
 import com.nixsolutions.dao.BookDAO;
 import com.nixsolutions.util.HibernateUtil;
 import org.dbunit.database.IDatabaseConnection;
+import org.dbunit.dataset.DataSetException;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ITable;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -20,6 +19,7 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 import static org.dbunit.Assertion.assertEqualsIgnoreCols;
 
@@ -34,19 +34,12 @@ public class H2BookDAOTest extends DBUnitConfig {
         super(name);
     }
 
+    @Before
+    public void init() throws Exception {
+    }
 
 
-    protected SessionFactory mockSetUp() throws ClassNotFoundException{
-
-        if (sessionFactory == null) {
-
-            Configuration configuration = new Configuration().configure("test_hibernate.cfg.xml");
-            configuration.configure();
-            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-                    .applySettings(configuration.getProperties())
-                    .build();
-            sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-        }
+    protected SessionFactory mockSetUp() throws ClassNotFoundException {
         return sessionFactory;
     }
 
@@ -77,50 +70,66 @@ public class H2BookDAOTest extends DBUnitConfig {
         assertEqualsIgnoreCols(expectedTable, actualTable, cols);
     }
 
-//    @Test
-//    public void testShouldUpdateBook() throws Exception {
-//        //given
-//        book = new Book("Polska istoria", 3, 2, 3, 2001, 4, "Some desrpt", 12, 12, 2);
-//        book.setBookID(4L);
-//        IDataSet expectedSet = new FlatXmlDataSetBuilder().build(new FileInputStream("src/test/resources/book/book-update.xml"));
-//        ITable expectedTable = expectedSet.getTable("book");
-//
-//        //when
-//        bookDAO.edit(book);
-//        IDataSet actualSet = connection.createDataSet();
-//        ITable actualTable = actualSet.getTable("book");
-//
-//        // then
-//        String[] cols = {"book_id", "book_rate", "number_of_readings"};
-//        assertEqualsIgnoreCols(expectedTable, actualTable, cols);
-//    }
-//
-//    @Test
-//    public void testShouldDeleteBook() throws Exception {
-//        //given
-//        Long bookID = 5L;
-//        IDataSet expectedSet = new FlatXmlDataSetBuilder().build(new FileInputStream("src/test/resources/book/book-delete.xml"));
-//        ITable expectedTable = expectedSet.getTable("book");
-//
-//        //when
-//        bookDAO.delete(bookID);
-//        IDataSet actualSet = connection.createDataSet();
-//        ITable actualTable = actualSet.getTable("book");
-//
-//        // then
-//        String[] cols = {"book_id", "book_rate", "number_of_readings"};
-//        assertEqualsIgnoreCols(expectedTable, actualTable, cols);
-//    }
-//
-//    @Test(expected = SQLException.class)
-//    public void testShouldThrowExceptionIfTryDeleteBookWhichUsedInOrder() throws FileNotFoundException, DataSetException {
-//        //given
-//        Long bookID = 2L;
-//
-//        //when
-//        bookDAO.delete(bookID);
-//    }
-//
+    @Test
+    public void testShouldUpdateBook() throws Exception {
+        //given
+        PowerMockito.mockStatic(HibernateUtil.class);
+        Mockito.when(HibernateUtil.getSessionFactory()).thenReturn(mockSetUp());
+        bookDAO = factory.getBookDAO();
+        Author author = new Author(3, "Gilbert", "Shildt", null);
+        PublishingHouse ph = new PublishingHouse(2, "Rosmen");
+        Genre genre = new Genre(3, "Science fiction");
+        Language language = new Language(4, "Polish");
+        Shelf shelf = new Shelf(2, 2);
+        book = new Book("Polska istoria", 2001, "Some desrpt", 1, 1, author, ph, genre,language, shelf);
+        book.setBookID(4L);
+        IDataSet expectedSet = new FlatXmlDataSetBuilder().build(new FileInputStream("src/test/resources/book/book-update.xml"));
+        ITable expectedTable = expectedSet.getTable("book");
+
+        //when
+        bookDAO.edit(book);
+        IDatabaseConnection connection = getConnection();
+        IDataSet actualSet = connection.createDataSet();
+        ITable actualTable = actualSet.getTable("book");
+
+        // then
+        String[] cols = {"book_id", "book_rate", "number_of_readings"};
+        assertEqualsIgnoreCols(expectedTable, actualTable, cols);
+    }
+
+    @Test
+    public void testShouldDeleteBook() throws Exception {
+        //given
+        PowerMockito.mockStatic(HibernateUtil.class);
+        Mockito.when(HibernateUtil.getSessionFactory()).thenReturn(mockSetUp());
+        bookDAO = factory.getBookDAO();
+        Long bookID = 5L;
+        IDataSet expectedSet = new FlatXmlDataSetBuilder().build(new FileInputStream("src/test/resources/book/book-delete.xml"));
+        ITable expectedTable = expectedSet.getTable("book");
+
+        //when
+        bookDAO.delete(bookID);
+        IDatabaseConnection connection = getConnection();
+        IDataSet actualSet = connection.createDataSet();
+        ITable actualTable = actualSet.getTable("book");
+
+        // then
+        String[] cols = {"book_id", "book_rate", "number_of_readings"};
+        assertEqualsIgnoreCols(expectedTable, actualTable, cols);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testShouldThrowExceptionIfTryDeleteBookWhichUsedInOrder() throws FileNotFoundException, DataSetException, ClassNotFoundException {
+        //given
+        PowerMockito.mockStatic(HibernateUtil.class);
+        Mockito.when(HibernateUtil.getSessionFactory()).thenReturn(mockSetUp());
+        bookDAO = factory.getBookDAO();
+        Long bookID = 2L;
+
+        //when
+        bookDAO.delete(bookID);
+    }
+
 //    @Test
 //    public void testShouldReturnBook() throws Exception {
 //        //given
